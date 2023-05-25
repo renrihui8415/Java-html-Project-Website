@@ -1,0 +1,240 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 引入我们的css初始化文件 -->
+    <link rel="stylesheet" href="static/css/normalize.css">
+    <!-- 引入我们首页的css -->
+    <link rel="stylesheet" href="static/css/index.css">
+    <!-- load google charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- load jquery for external data source from database -->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <title>VoirLeMonde</title>
+</head>
+
+<body>
+    <header>
+        <h1>Household Spending by Provinces</h1>
+        <div id="showtime">
+            Now is
+        </div>
+        <script>
+            var clock = null;
+            clock = setTimeout(nowTime, 1000);
+
+            function nowTime() {
+                clearTimeout(clock);
+                var t = new Date();
+                // var y = t.;
+
+                //var time = t.getFullYear() + "年" + t.getMonth() +
+                    //"月" + t.getDate() + "日" + t.getHours() + "时" + t.getMinutes() +
+                    //"分" + t.getSeconds() + "秒";
+                document.getElementById('showtime').innerHTML = t;
+
+                clock = setTimeout(nowTime, 1000);
+            }
+        </script>
+    </header>
+    <section>
+
+
+        <div class="main">
+            <div class="column">
+                <div class="panel">
+                    <div class="panel-footer">
+                    </div>
+
+                    <div class="bar">
+                        <h2>柱形图-就业行业</h2>
+                        <div class="chart" id="a">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+                    <div class="panel-footer">
+                    </div>
+
+                    <div class="line">
+                        <h2>折线图-人员变化
+                            <a href="javascript:;">2020</a>
+                            <a href="javascript:;">2021</a>
+                        </h2>
+                        <div class="chart">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel">
+                    <div class="panel-footer">
+                    </div>
+
+                    <div class="pie">
+                        <h2>柱形图-就业行业</h2>
+                        <div class="chart">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+            <div class="column">
+                <div class="num">
+                    <div class="num-hd">
+                        <ul>
+                            <li>154555</li>
+                            <li>25443</li>
+                        </ul>
+                    </div>
+                    <div class="num-bd">
+                        <ul>
+                            <li>前端</li>
+                            <li>市场</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="map" >
+                    <div class="map1"></div>
+                    <div class="map2"></div>
+                    <div class="map3"></div>
+                    <div class="chart" id="map_canada"></div>
+                    <script>
+                        //to move map of Canada on the html page
+                        //in the index.css, make outer div "chart" to be absolute
+                        // Make the inner DIV "map_canada" element draggable:
+                        dragElement(document.getElementById("chart"));
+
+                        function dragElement(elmnt) {
+                        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+                        if (document.getElementById("map_canada")) {
+                            // if present, the header is where you move the DIV from:
+                            document.getElementById("map_canada").onmousedown = dragMouseDown;
+                        } else {
+                            // otherwise, move the DIV from anywhere inside the DIV:
+                            elmnt.onmousedown = dragMouseDown;
+                        }
+
+                        function dragMouseDown(e) {
+                            e = e || window.event;
+                            e.preventDefault();
+                            // get the mouse cursor position at startup:
+                            pos3 = e.clientX;
+                            pos4 = e.clientY;
+                            document.onmouseup = closeDragElement;
+                            // call a function whenever the cursor moves:
+                            document.onmousemove = elementDrag;
+                        }
+
+                        function elementDrag(e) {
+                            e = e || window.event;
+                            e.preventDefault();
+                            // calculate the new cursor position:
+                            pos1 = pos3 - e.clientX;
+                            pos2 = pos4 - e.clientY;
+                            pos3 = e.clientX;
+                            pos4 = e.clientY;
+                            // set the element's new position:
+                            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                        }
+
+                        function closeDragElement() {
+                            // stop moving when mouse button is released:
+                            document.onmouseup = null;
+                            document.onmousemove = null;
+                        }
+                        }
+                    </script>
+                </div>
+
+
+            </div>
+
+
+            <div class="column">
+                <div class="panel">
+                    <div class="panel-footer">
+                    </div>
+
+                    <div class="bar2">
+                        <h2>柱形图-就业行业</h2>
+                        <div class="chart">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+                    <div class="panel-footer">
+                    </div>
+
+                    <div class="line2">
+                        <h2>柱形图-就业行业</h2>
+                        <div class="chart">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel">
+                    <div class="panel-footer">
+                    </div>
+
+                    <div class="pie2">
+                        <h2>柱形图-就业行业</h2>
+                        <div class="chart">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+    <script src="static/js/echarts-4.2.1.min.js"></script>
+    <script src="static/js/flexible.js"></script>
+    <script src="static/js/jquery-1.10.2.js"></script>
+    <script src="static/js/canada.js"></script>
+    <script src="static/js/index.js"></script>
+
+</body>
+
+</html>
